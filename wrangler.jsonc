@@ -25,7 +25,8 @@
     {
       "binding": "DB",
       "database_name": "renew-home-account",
-      "database_id": "local"
+      "database_id": "05b44bc5-e351-4b04-9c02-f01bf942a7f7",
+      "preview_database_id": "renew-home-account-preview"
     }
   ],
   "observability": {
