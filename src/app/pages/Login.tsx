@@ -35,8 +35,8 @@ export function Login() {
       <div className={styles.card}>
         <h1 className={styles.title}>Email Listing App</h1>
         <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={styles.formGroup}>
-            <label htmlFor="email">Email</label>
+          <div className="field">
+            <label htmlFor="email" className="field-label">Email</label>
             <input
               id="email"
               type="email"
@@ -44,12 +44,12 @@ export function Login() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               required
-              className={styles.input}
+              className="input"
             />
           </div>
 
-          <div className={styles.formGroup}>
-            <label htmlFor="password">Password</label>
+          <div className="field">
+            <label htmlFor="password" className="field-label">Password</label>
             <input
               id="password"
               type="password"
@@ -57,25 +57,25 @@ export function Login() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
               required
-              className={styles.input}
+              className="input"
             />
           </div>
 
-          {error && <div className={styles.error}>{error}</div>}
+          {error && <p className="field-error">{error}</p>}
 
-          <button type="submit" disabled={isLoading} className={styles.button}>
+          <button type="submit" disabled={isLoading} className="btn btn-primary btn-block" aria-busy={isLoading}>
             {isLoading ? 'Loading...' : isLogin ? 'Login' : 'Register'}
           </button>
         </form>
 
-        <div className={styles.divider}>atau</div>
+        <div className={styles.divider}>or</div>
 
         <button
           type="button"
           onClick={() => setIsLogin(!isLogin)}
-          className={styles.linkButton}
+          className="btn btn-ghost btn-block"
         >
-          {isLogin ? 'Belum punya akun? Daftar' : 'Sudah punya akun? Login'}
+          {isLogin ? "Don't have an account? Register" : 'Already have an account? Login'}
         </button>
       </div>
     </div>

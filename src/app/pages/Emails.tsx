@@ -46,16 +46,20 @@ export function Emails() {
       <header className={styles.header}>
         <h1>Email Listing</h1>
         <div className={styles.headerActions}>
-          <button onClick={handleSettings} className={styles.settingsButton}>
+          <button onClick={handleSettings} className="btn btn-ghost">
             ⚙️ Settings
           </button>
-          <button onClick={handleLogout} className={styles.logoutButton}>
+          <button onClick={handleLogout} className="btn btn-danger-soft">
             Logout
           </button>
         </div>
       </header>
 
-      {error && <div className={styles.error}>{error}</div>}
+      {error && (
+        <div className={styles.error}>
+          <p className="field-error">{error}</p>
+        </div>
+      )}
 
       {isLoading ? (
         <div className={styles.loading}>Loading emails...</div>
@@ -101,7 +105,7 @@ export function Emails() {
               <button
                 onClick={() => setPage(Math.max(1, page - 1))}
                 disabled={page === 1}
-                className={styles.paginationButton}
+                className="btn btn-outline btn-sm"
               >
                 ← Previous
               </button>
@@ -111,7 +115,7 @@ export function Emails() {
               <button
                 onClick={() => setPage(Math.min(totalPages, page + 1))}
                 disabled={page === totalPages}
-                className={styles.paginationButton}
+                className="btn btn-outline btn-sm"
               >
                 Next →
               </button>

@@ -71,7 +71,7 @@ export function Settings() {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <button onClick={handleBack} className={styles.backButton}>
+        <button onClick={handleBack} className="btn btn-ghost">
           ← Back
         </button>
         <h1>Settings</h1>
@@ -82,9 +82,9 @@ export function Settings() {
         <div className={styles.card}>
           <div className={styles.section}>
             <h2>Account Information</h2>
-            <div className={styles.infoGroup}>
-              <label>Email</label>
-              <input type="email" value={user?.email || ''} disabled className={styles.infoInput} />
+            <div className="field">
+              <label className="field-label">Email</label>
+              <input type="email" value={user?.email || ''} disabled className="input" />
             </div>
           </div>
 
@@ -96,39 +96,39 @@ export function Settings() {
               Connect your Gmail account to start syncing Netflix-related emails
             </p>
 
-            <form onSubmit={handleConnectGmail}>
-              <div className={styles.formGroup}>
-                <label htmlFor="gmailEmail">Gmail Email</label>
+            <form onSubmit={handleConnectGmail} className={styles.form}>
+              <div className="field">
+                <label htmlFor="gmailEmail" className="field-label">Gmail Email</label>
                 <input
                   id="gmailEmail"
                   type="email"
                   value={gmailEmail}
                   onChange={(e) => setGmailEmail(e.target.value)}
                   placeholder="your-email@gmail.com"
-                  className={styles.input}
+                  className="input"
                 />
               </div>
 
-              <div className={styles.formGroup}>
-                <label htmlFor="gmailPassword">Gmail Password or App Password</label>
+              <div className="field">
+                <label htmlFor="gmailPassword" className="field-label">Gmail Password or App Password</label>
                 <input
                   id="gmailPassword"
                   type="password"
                   value={gmailPassword}
                   onChange={(e) => setGmailPassword(e.target.value)}
                   placeholder="Enter your password"
-                  className={styles.input}
+                  className="input"
                 />
-                <small className={styles.hint}>
+                <div className="hint">
                   💡 If you have 2FA enabled, use App Password instead
-                </small>
+                </div>
               </div>
 
-              {error && <div className={styles.error}>{error}</div>}
-              {success && <div className={styles.success}>{success}</div>}
+              {error && <p className="field-error">{error}</p>}
+              {success && <p className={styles.success}>{success}</p>}
 
               <div className={styles.buttonGroup}>
-                <button type="submit" disabled={isLoading} className={styles.button}>
+                <button type="submit" disabled={isLoading} className="btn btn-primary" aria-busy={isLoading}>
                   {isLoading ? 'Connecting...' : 'Connect Gmail'}
                 </button>
 
@@ -137,7 +137,8 @@ export function Settings() {
                     type="button"
                     onClick={handleSyncEmails}
                     disabled={isSyncing}
-                    className={styles.syncButton}
+                    className="btn btn-outline"
+                    aria-busy={isSyncing}
                   >
                     {isSyncing ? 'Syncing...' : '🔄 Sync Emails'}
                   </button>
