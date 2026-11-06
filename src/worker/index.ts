@@ -5,7 +5,7 @@ import { authRoutes } from './routes/auth'
 import { gmailRoutes } from './routes/gmail'
 import { emailRoutes } from './routes/emails'
 
-const app = new Hono<{ Bindings: Env }>()
+const app = new Hono<{ Bindings: Env }>().basePath('/api')
 
 app.use(
   '*',
@@ -16,10 +16,14 @@ app.use(
   }),
 )
 
-app.route('/api/auth', authRoutes)
-app.route('/api/gmail', gmailRoutes)
-app.route('/api/emails', emailRoutes)
+// API routes
+app.route('/auth', authRoutes)
+app.route('/gmail', gmailRoutes)
+app.route('/emails', emailRoutes)
 
 app.get('/health', (c) => c.json({ status: 'ok' }))
 
+app.notFound((c) => c.json({ error: 'Not Found' }, 404))
+
+// Export the app
 export default app
